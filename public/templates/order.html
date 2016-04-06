@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>
+        Order History
+        <div class="btn-group pull-right" uib-dropdown is-open="status.isopen" >
+            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                Sort </span> <span class="caret"></span>
+            </button>
+            <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ng-click="model.sortOrder('-timePlaced')">Date (newest to oldest)</a></li>
+                <li role="menuitem"><a n ng-click="model.sortOrder('timePlaced')">Date (oldest to newest)</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a n ng-click="model.sortOrder('total')">Total price (lowest to highest)</a></li>
+                <li role="menuitem"><a n ng-click="model.sortOrder('-total')">Total price (highest to lowest)</a></li>
+            </ul>
+        </div>
+    </h1>
+    <div class="panel panel-default" ng-repeat="order in model.orders | orderBy:model.sort">
+        <div class="panel-heading" ng-bind="order.timePlaced | date:'longDate'"></div>
+        <div class="panel-body">
+            <div class="row" ng-repeat="item in order.items">
+                <div class="col-sm-2 text-right" ng-bind="item.quantity"></div>
+                <div class="col-sm-8" ng-bind="item.name"></div>
+                <div class="col-sm-2 text-right" ng-bind="item.price | currency"></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8"><strong>Total (including 7.5% tax):</strong></div>
+                <div class="col-sm-2 text-right" ng-bind="order.total | currency"></div>
+            </div>
+        </div>
+    </div>
+</div>

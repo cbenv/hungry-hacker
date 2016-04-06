@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Menu</h1>
+    <div class="row" ng-repeat="item in model.items">
+        <div class="col-sm-8" ng-bind="item.name"></div>
+        <div class="col-sm-2 text-right" ng-bind="item.price | currency"></div>
+        <div class="col-sm-2">
+            <a class="btn btn-danger btn-block" ng-click="model.remove(item)">Delete</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <input type="text" placeholder="Food Name" class="form-control" ng-model="model.newItem.name">
+        </div>
+        <div class="col-sm-2">
+            <input type="number" placeholder="Price" class="form-control" ng-model="model.newItem.price">
+        </div>
+        <div class="col-sm-2">
+            <a class="btn btn-success btn-block" ng-click="model.add(model.newItem)">Add</a>
+        </div>
+    </div>
+</div>

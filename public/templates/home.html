@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Menu</h1>
+    <div class="row" ng-repeat="item in model.items">
+        <div class="col-sm-2"><a class="btn btn-success btn-block" ng-click="model.addItem(item)">Add</a></div>
+        <div class="col-sm-8" ng-bind="item.name"></div>
+        <div class="col-sm-2 text-right" ng-bind="item.price | currency"></div>
+    </div>
+    <h1>Cart</h1>
+    <div class="row" ng-repeat="item in model.cart">
+        <div class="col-sm-2"><a class="btn btn-danger btn-block" ng-click="model.removeItem(item)">Remove</a></div>
+        <div class="col-sm-8" ng-bind="item.name"></div>
+        <div class="col-sm-2 text-right" ng-bind="item.price | currency"></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8"><strong>Total (including 7.5% tax):</strong></div>
+        <div class="col-sm-2 text-right" ng-bind="model.total | currency"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-2"><a class="btn btn-primary btn-block" ng-click="model.submitOrder(model.cart)">Submit Order</a></div>
+    </div>
+</div>
